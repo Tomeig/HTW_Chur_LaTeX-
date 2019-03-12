@@ -1,0 +1,155 @@
+% Externes Stylsheet
+\documentclass{htwchur}
+
+
+
+% für abbildungsverzeichnis
+\makeatletter
+\renewcommand\@makefntext[1]{\rightskip=2.5em\leftskip=3em\hskip-2em\@makefnmark#1}
+\makeatother
+
+\title{Latex Vorlage}
+\author{M.Muster}
+
+
+\makeindex
+\makeglossary
+
+
+\begin{document}
+
+\input{./titelblatt.tex}
+
+
+\begin{abstract}
+Diese Arbeit entstand im Zuge des Modules xyz
+im Studiengang Information Science an der Hochschule für Technik und Wirtschaft (HTW) Chur. Sie behandelt xyz 
+\\\\
+\textbf{Schlagwörter: }Vorlage, Wissenschaftlichkeit
+
+\end{abstract}
+
+
+
+\newpage
+\pagenumbering{Roman}
+\setcounter{page}{2}
+%%%% Inhaltsverzeichnis
+\tableofcontents
+
+\newpage
+%%%% Abkürzungserzeichniss
+\section*{Abkürzungsverzeichnis}
+
+\begin{acronym}[Bash]
+	\acro{HTW}{Hochschule für Technik und Wirtschaft}
+\end{acronym}
+
+\newpage
+
+%%%% Abbildungsverzeichnis
+\section*{Abbildungsverzeichniss}
+\setlength{\cftfignumwidth}{3cm}
+\setlength{\cftfigindent}{0cm}
+\renewcommand{\cftfigpresnum}{Abbildung }
+\renewcommand{\cftfigaftersnum}{:}
+\makeatletter
+\@starttoc{lof}% Print List of Figures
+\makeatother
+
+
+%%%% Tabellenverzeichnis
+\section*{Tabellenverzeichnis}
+\phantomsection
+\setlength{\cfttabindent}{0cm}
+\setlength{\cfttabnumwidth}{3cm}
+\renewcommand{\cfttabpresnum}{Tabelle }
+\renewcommand{\cfttabaftersnum}{:}
+\makeatletter
+\@starttoc{lot}% Print List of Tables
+\makeatother
+
+%%%% Start der Nummerierung
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Ziel und Nutzen} \label{sec:ziel_und_nutzen}
+\subsection{Ausgangslage} \label{sec:ausgangslage}
+\lipsum[1-1]
+
+
+\section{Arten} \label{sec:zielsetzung_und_forschungsfrage}
+
+\subsection{Liste}
+
+\begin{itemize}
+	\setlength{\parskip}{0pt}
+	\item Dies ist ein Listeneintrag
+	\item Das auch
+\end{itemize}
+
+\subsection{Tabelle}
+
+\begin{table}[H]
+\renewcommand{\arraystretch}{1.5}
+\centering
+\begin{tabular}{|l|l|}
+	\hline
+	\textbf{Python}       & \textbf{Java}                   \\ \hline
+	Schön & Hässlich                       \\ \hline
+	Leicht zu lernen         & java??                                 \\ \hline
+
+\end{tabular} \caption{Dies ist eine Beispielstabelle}	
+\end{table}
+
+\subsection{Grafik}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale = 0.85]{Bilder/HTW_Logo.png}
+	\caption[Logo der HTW Chur]{Logo der HTW Chur}
+	\label{fig:workflow}
+\end{figure}
+
+
+\subsection{Seitenverweise} \label{sec:Verweis}
+In Kapitel \textit{\ref{sec:ausgangslage} \nameref{sec:ausgangslage}}\footnote{Seite \pageref{sec:ausgangslage}.} xyz
+
+\subsection{Abkürzungen}
+\ac{HTW}
+
+\subsection{Zitieren} \label{sec:Zitieren}
+
+
+\subsubsection{zitation}
+hallo welt\cite{IPTC}
+
+\subsubsection{Direkt Mittig}
+" \textit{Ohne Top-Management-Unterstützung stehen die Wissensmanager [...] auf verlorenem Posten.}" \cite{IPTC}
+
+\subsubsection{Zitat hervorheben}
+\begin{displayquote}
+	\textit{"\lipsum[1-1]"} \cite{IPTC}
+\end{displayquote}
+
+
+\newpage
+
+\bibliographystyle{apacite}
+\bibliography{Literatur_vorlage}
+
+
+
+% Dokumentenanhang
+\newpage
+
+\section{Anhang}
+\newcounter{at_counter}
+\newcommand{\atcount}[1]{\refstepcounter{at_counter}}
+
+\includepdf[pages=-]{Anhang/Vorlage_HTW.pdf}
+
+
+
+\end{document}
